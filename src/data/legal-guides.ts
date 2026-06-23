@@ -18,7 +18,7 @@ const DISCLAIMER = `Conteúdo informativo de caráter geral. Não substitui cons
 export const CIVIL_LAW_GUIDE: LegalGuide = {
   title: "Direito Civil",
   metaDescription:
-    "Orientação sobre Direito Civil: contratos, responsabilidade civil, cobranças e obrigações. Wilson Faustino Advocacia — Foz do Iguaçu, PR.",
+    "Orientação sobre Direito Civil: contratos, responsabilidade civil, cobranças e obrigações. Wilson Faustino Advocacia — Volta Redonda, RJ.",
   heroSubtitle:
     "Contratos, obrigações, responsabilidade civil, cobranças e questões do direito privado — entenda quando buscar orientação jurídica.",
   introTitle: "O que abrange o Direito Civil?",
@@ -56,7 +56,7 @@ export const CIVIL_LAW_GUIDE: LegalGuide = {
 export const FAMILY_LAW_GUIDE: LegalGuide = {
   title: "Direito de Família e Sucessões",
   metaDescription:
-    "Divórcio, guarda, pensão alimentícia, inventário e partilha de bens. Wilson Faustino Advocacia — Foz do Iguaçu, PR.",
+    "Divórcio, guarda, pensão alimentícia, inventário e partilha de bens. Wilson Faustino Advocacia — Volta Redonda, RJ.",
   heroSubtitle:
     "Divórcio, guarda de filhos, pensão alimentícia, inventário e partilha de bens — orientação sensível e técnica para momentos delicados.",
   introTitle: "Direito de Família e Sucessões",
@@ -132,7 +132,7 @@ export const CONSUMER_LAW_GUIDE: LegalGuide = {
 export const TAX_LAW_GUIDE: LegalGuide = {
   title: "Direito Tributário",
   metaDescription:
-    "Consultoria tributária, planejamento fiscal, obrigações acessórias e defesa em autuações. Wilson Faustino Advocacia — Foz do Iguaçu, PR.",
+    "Consultoria tributária, planejamento fiscal, obrigações acessórias e defesa em autuações. Wilson Faustino Advocacia — Volta Redonda, RJ.",
   heroSubtitle:
     "Planejamento tributário, obrigações fiscais, consultoria para empresas e defesa em autuações — orientação técnica com visão estratégica.",
   introTitle: "Segurança fiscal para pessoas e empresas",
@@ -170,7 +170,7 @@ export const TAX_LAW_GUIDE: LegalGuide = {
 export const CONTRACTS_LAW_GUIDE: LegalGuide = {
   title: "Contratos",
   metaDescription:
-    "Elaboração, revisão e negociação de contratos civis e empresariais. Wilson Faustino Advocacia — Foz do Iguaçu, PR.",
+    "Elaboração, revisão e negociação de contratos civis e empresariais. Wilson Faustino Advocacia — Volta Redonda, RJ.",
   heroSubtitle:
     "Elaboração, revisão e negociação de contratos — segurança jurídica antes de assinar e defesa em caso de inadimplemento.",
   introTitle: "Contratos bem estruturados evitam litígios",
@@ -208,7 +208,7 @@ export const CONTRACTS_LAW_GUIDE: LegalGuide = {
 export const BUSINESS_LAW_GUIDE: LegalGuide = {
   title: "Direito Empresarial",
   metaDescription:
-    "Constituição de empresas, contratos comerciais, societário e compliance. Wilson Faustino Advocacia — Foz do Iguaçu, PR.",
+    "Constituição de empresas, contratos comerciais, societário e compliance. Wilson Faustino Advocacia — Volta Redonda, RJ.",
   heroSubtitle:
     "Constituição de empresas, contratos comerciais, questões societárias e compliance — suporte jurídico para o seu negócio.",
   introTitle: "Segurança jurídica para empresas",
@@ -246,7 +246,7 @@ export const BUSINESS_LAW_GUIDE: LegalGuide = {
 export const REAL_ESTATE_LAW_GUIDE: LegalGuide = {
   title: "Direito Imobiliário",
   metaDescription:
-    "Compra e venda, locação, usucapião e regularização de imóveis. Wilson Faustino Advocacia — Foz do Iguaçu, PR.",
+    "Compra e venda, locação, usucapião e regularização de imóveis. Wilson Faustino Advocacia — Volta Redonda, RJ.",
   heroSubtitle:
     "Compra e venda, locação, financiamento, usucapião e regularização de imóveis — orientação para proteger seu patrimônio.",
   introTitle: "Questões imobiliárias no dia a dia",

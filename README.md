@@ -1,6 +1,6 @@
 # Wilson Faustino Advocacia
 
-Site profissional do escritório **Wilson Faustino Advocacia**, à frente do **Dr. Wilson Faustino** — Advogado, OAB/PR.
+Site profissional do escritório **Wilson Faustino Advocacia**, à frente do **Dr. Wilson Faustino** — Advogado, OAB/RJ.
 
 Especialidades: Família e Sucessões, Direito Civil, Contratos, Empresarial e Tributário.
 

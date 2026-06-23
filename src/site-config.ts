@@ -29,11 +29,11 @@ export const FIRM_SHORT_NAME = "Wilson Faustino Advocacia";
 export const DOCTOR_NAME = "Dr. Wilson Faustino";
 export const DOCTOR_NAME_FULL = "Wilson Faustino";
 export const DOCTOR_TITLE = "Advogado";
-export const OAB = "OAB/PR";
+export const OAB = "OAB/RJ";
 export const DOCTOR_TAGLINE =
   "Família e Sucessões · Direito Civil · Empresarial e Tributário";
-export const CITY = "Foz do Iguaçu";
-export const STATE = "PR";
+export const CITY = "Volta Redonda";
+export const STATE = "RJ";
 
 export const UNIVERSITY =
   "Faculdade Carlos Drummond de Andrade · Universidade Cruzeiro do Sul";
@@ -58,7 +58,7 @@ export const ADDRESS_NOTE =
   "Atendimento com hora marcada · Seg a Sex, 9h às 18h · Presencial e online em todo o Brasil";
 
 export const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Foz+do+Iguaçu+PR";
+  "https://www.google.com/maps/search/?api=1&query=Volta+Redonda+RJ";
 
 export const BIO_PARAGRAPHS = [
   `${DOCTOR_NAME} é advogado especialista em Direito de Família e Sucessões, com sólida formação em Direito e ampla experiência em Direito Civil, Contratos, Empresarial e Tributário. À frente do escritório ${FIRM_SHORT_NAME}, atua em ${CITY} e em todo o Brasil com atendimento presencial e online.`,
@@ -100,7 +100,7 @@ export const DIFFERENTIALS = [
   },
   {
     title: "Presencial e Online",
-    desc: "Flexibilidade para consultas em Foz do Iguaçu ou por videoconferência em qualquer lugar.",
+    desc: `Flexibilidade para consultas em ${CITY} ou por videoconferência em qualquer lugar.`,
   },
   {
     title: "Estratégia e Transparência",
