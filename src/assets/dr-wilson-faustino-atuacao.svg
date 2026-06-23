@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Atuação jurídica Wilson Faustino">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0b1a2e"/>
+      <stop offset="100%" stop-color="#134e4a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a574"/>
+      <stop offset="100%" stop-color="#14b8a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg2)"/>
+  <g transform="translate(300 280)" fill="none" stroke="url(#gold)" stroke-width="8" stroke-linecap="round">
+    <path d="M-80 120 L0 -100 L80 120"/>
+    <line x1="-100" y1="120" x2="100" y2="120"/>
+    <line x1="0" y1="-100" x2="0" y2="180"/>
+  </g>
+  <circle cx="300" cy="520" r="90" fill="#122640" stroke="url(#gold)" stroke-width="3"/>
+  <text x="300" y="535" text-anchor="middle" fill="url(#gold)" font-family="Georgia, serif" font-size="48" font-weight="600">WF</text>
+  <text x="300" y="700" text-anchor="middle" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="18" letter-spacing="4">JUSTIÇA E ESTRATÉGIA</text>
+</svg>
