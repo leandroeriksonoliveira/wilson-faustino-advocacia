@@ -29,7 +29,10 @@ export const FIRM_SHORT_NAME = "Wilson Faustino Advocacia";
 export const DOCTOR_NAME = "Dr. Wilson Faustino";
 export const DOCTOR_NAME_FULL = "Wilson Faustino";
 export const DOCTOR_TITLE = "Advogado";
-export const OAB = "OAB/RJ";
+/** Confirmar no CNA/OAB: https://cna.oab.org.br */
+export const OAB_REGISTRATION = "231.870";
+export const OAB = `OAB/RJ ${OAB_REGISTRATION}`;
+export const PRIVACY_POLICY_PATH = "/politica-privacidade";
 export const DOCTOR_TAGLINE =
   "Família e Sucessões · Direito Civil · Empresarial e Tributário";
 export const CITY = "Volta Redonda";
@@ -61,7 +64,7 @@ export const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Volta+Redonda+RJ";
 
 export const BIO_PARAGRAPHS = [
-  `${DOCTOR_NAME} é advogado especialista em Direito de Família e Sucessões, com sólida formação em Direito e ampla experiência em Direito Civil, Contratos, Empresarial e Tributário. À frente do escritório ${FIRM_SHORT_NAME}, atua em ${CITY} e em todo o Brasil com atendimento presencial e online.`,
+  `${DOCTOR_NAME} é advogado com foco em Direito de Família e Sucessões, com sólida formação em Direito e ampla experiência em Direito Civil, Contratos, Empresarial e Tributário. À frente do escritório ${FIRM_SHORT_NAME}, atua em ${CITY} e em todo o Brasil com atendimento presencial e online.`,
   "Com trajetória que une advocacia e visão estratégica de negócios — incluindo experiência em gestão fiscal e contábil — o escritório oferece orientação técnica, clara e personalizada para pessoas físicas e jurídicas em momentos delicados e decisões patrimoniais relevantes.",
   "Cada demanda é tratada com sigilo profissional, ética e compromisso com resultados, buscando soluções eficientes na prevenção de conflitos, na negociação ou na representação em juízo.",
 ] as const;
@@ -70,7 +73,7 @@ export const PROFESSIONAL_EXPERIENCE = [
   {
     area: "Família e Sucessões",
     focus: "Divórcio, guarda, pensão e inventário",
-    period: "Atuação especializada desde 2023",
+    period: "Atuação em Família e Sucessões desde 2023",
   },
   {
     area: "Direito Civil e Contratos",
@@ -91,7 +94,7 @@ export const PROFESSIONAL_EXPERIENCE = [
 
 export const DIFFERENTIALS = [
   {
-    title: "Especialização em Família",
+    title: "Foco em Família e Sucessões",
     desc: "Abordagem técnica e humana em divórcios, guarda, pensão e inventários.",
   },
   {
@@ -194,6 +197,9 @@ export const SITE_TITLE = `${FIRM_SHORT_NAME} | ${DOCTOR_NAME} · ${OAB} · ${CI
 export const SITE_DESCRIPTION = `${DOCTOR_TAGLINE}. Consultoria e advocacia com ${DOCTOR_NAME} em ${CITY}, ${STATE} — presencial e online. Família, Sucessões, Civil, Empresarial e Tributário.`;
 
 export const OG_DESCRIPTION = `Consultoria jurídica com ${DOCTOR_NAME}. Atendimento presencial em ${CITY} e online em todo o Brasil.`;
+
+export const OAB_MARKETING_NOTICE =
+  "Conteúdo institucional e informativo, em conformidade com o Provimento CFOAB nº 205/2021. Não constitui consulta jurídica nem promessa de resultado.";
 
 export const STAT_YEARS = "18+";
 export const STAT_CLIENTS = "100%";

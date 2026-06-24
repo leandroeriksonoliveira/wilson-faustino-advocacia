@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
+import { CookieConsent } from "../components/CookieConsent";
 import appCss from "../styles.css?url";
 import { CLINIC_NAME, DOCTOR_NAME, OG_DESCRIPTION, SITE_DESCRIPTION, SITE_TITLE } from "../site-config";
 
@@ -115,6 +116,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <CookieConsent />
     </QueryClientProvider>
   );
 }

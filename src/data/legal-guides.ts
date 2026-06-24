@@ -85,7 +85,7 @@ export const FAMILY_LAW_GUIDE: LegalGuide = {
     "Questões de guarda ou visitas dos filhos",
   ],
   cta: {
-    title: "Questões familiares exigem orientação especializada",
+    title: "Questões familiares exigem orientação técnica",
     text: "Entre em contato para uma consulta reservada e personalizada.",
   },
   disclaimer: DISCLAIMER,
@@ -161,7 +161,7 @@ export const TAX_LAW_GUIDE: LegalGuide = {
     "Precisa de orientação sobre obrigações fiscais",
   ],
   cta: {
-    title: "Questões tributárias exigem atenção especializada",
+    title: "Questões tributárias exigem atenção técnica",
     text: "Agende uma consulta com o Dr. Wilson Faustino para avaliar sua situação fiscal.",
   },
   disclaimer: DISCLAIMER,

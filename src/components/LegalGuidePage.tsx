@@ -6,6 +6,8 @@ import {
   DOCTOR_TITLE,
   FIRM_SHORT_NAME,
   OAB,
+  OAB_MARKETING_NOTICE,
+  PRIVACY_POLICY_PATH,
   SCHEDULE_CONSULTATION_TEXT,
   SCHEDULE_CONSULTATION_TITLE,
   WHATSAPP_URL,
@@ -38,7 +40,7 @@ export function LegalGuidePage({ guide }: { guide: LegalGuide }) {
 
       <main className="mx-auto max-w-4xl px-5 py-12 lg:px-8 lg:py-16">
         <span className="text-sm font-semibold uppercase tracking-wider text-[color:var(--color-ink-soft)]/60">
-          Especialidade jurídica
+          Área de atuação
         </span>
         <h1 className="font-display mt-3 text-3xl font-semibold tracking-tight text-[color:var(--color-ink)] sm:text-4xl lg:text-5xl">
           {guide.title}
@@ -139,7 +141,13 @@ export function LegalGuidePage({ guide }: { guide: LegalGuide }) {
         <p>
           © {new Date().getFullYear()} {FIRM_SHORT_NAME}. {DOCTOR_NAME} · {OAB}
         </p>
-        <p className="mt-2 text-xs">{SCHEDULE_CONSULTATION_TITLE}</p>
+        <p className="mt-3 text-xs text-white/45">{OAB_MARKETING_NOTICE}</p>
+        <p className="mt-2">
+          <Link to={PRIVACY_POLICY_PATH} className="text-[color:var(--color-lime-soft)] hover:underline">
+            Política de Privacidade
+          </Link>
+        </p>
+        <p className="mt-2 text-xs text-white/40">{SCHEDULE_CONSULTATION_TITLE}</p>
         <p className="mt-1 text-xs text-white/40">{SCHEDULE_CONSULTATION_TEXT}</p>
       </footer>
     </div>

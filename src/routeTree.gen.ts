@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PoliticaPrivacidadeRouteImport } from './routes/politica-privacidade'
 import { Route as DireitoTributarioRouteImport } from './routes/direito-tributario'
 import { Route as DireitoImobiliarioRouteImport } from './routes/direito-imobiliario'
 import { Route as DireitoEmpresarialRouteImport } from './routes/direito-empresarial'
@@ -19,6 +20,11 @@ import { Route as DireitoCivilRouteImport } from './routes/direito-civil'
 import { Route as ConsultoriaJuridicaRouteImport } from './routes/consultoria-juridica'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PoliticaPrivacidadeRoute = PoliticaPrivacidadeRouteImport.update({
+  id: '/politica-privacidade',
+  path: '/politica-privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DireitoTributarioRoute = DireitoTributarioRouteImport.update({
   id: '/direito-tributario',
   path: '/direito-tributario',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/direito-empresarial': typeof DireitoEmpresarialRoute
   '/direito-imobiliario': typeof DireitoImobiliarioRoute
   '/direito-tributario': typeof DireitoTributarioRoute
+  '/politica-privacidade': typeof PoliticaPrivacidadeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/direito-empresarial': typeof DireitoEmpresarialRoute
   '/direito-imobiliario': typeof DireitoImobiliarioRoute
   '/direito-tributario': typeof DireitoTributarioRoute
+  '/politica-privacidade': typeof PoliticaPrivacidadeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/direito-empresarial': typeof DireitoEmpresarialRoute
   '/direito-imobiliario': typeof DireitoImobiliarioRoute
   '/direito-tributario': typeof DireitoTributarioRoute
+  '/politica-privacidade': typeof PoliticaPrivacidadeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/direito-empresarial'
     | '/direito-imobiliario'
     | '/direito-tributario'
+    | '/politica-privacidade'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/direito-empresarial'
     | '/direito-imobiliario'
     | '/direito-tributario'
+    | '/politica-privacidade'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/direito-empresarial'
     | '/direito-imobiliario'
     | '/direito-tributario'
+    | '/politica-privacidade'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,10 +157,18 @@ export interface RootRouteChildren {
   DireitoEmpresarialRoute: typeof DireitoEmpresarialRoute
   DireitoImobiliarioRoute: typeof DireitoImobiliarioRoute
   DireitoTributarioRoute: typeof DireitoTributarioRoute
+  PoliticaPrivacidadeRoute: typeof PoliticaPrivacidadeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/politica-privacidade': {
+      id: '/politica-privacidade'
+      path: '/politica-privacidade'
+      fullPath: '/politica-privacidade'
+      preLoaderRoute: typeof PoliticaPrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/direito-tributario': {
       id: '/direito-tributario'
       path: '/direito-tributario'
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   DireitoEmpresarialRoute: DireitoEmpresarialRoute,
   DireitoImobiliarioRoute: DireitoImobiliarioRoute,
   DireitoTributarioRoute: DireitoTributarioRoute,
+  PoliticaPrivacidadeRoute: PoliticaPrivacidadeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

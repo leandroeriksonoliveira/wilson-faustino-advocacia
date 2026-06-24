@@ -56,8 +56,10 @@ import {
   SITE_TITLE,
   SITE_DESCRIPTION,
   STAT_SPECIALTIES,
-  STAT_YEARS,
+  OAB_REGISTRATION,
   OAB,
+  OAB_MARKETING_NOTICE,
+  PRIVACY_POLICY_PATH,
   SPECIALIZATIONS,
   CONTENT_DISCLAIMER,
   SCHEDULE_CONSULTATION_TEXT,
@@ -288,8 +290,8 @@ function Hero() {
               <p className="text-[11px] uppercase tracking-wider text-[color:var(--color-ink-soft)]/60">Especialidades</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-[color:var(--color-ink)]">{STAT_YEARS}</p>
-              <p className="text-[11px] uppercase tracking-wider text-[color:var(--color-ink-soft)]/60">Anos de experiência</p>
+              <p className="text-2xl font-bold text-[color:var(--color-ink)]">{OAB_REGISTRATION}</p>
+              <p className="text-[11px] uppercase tracking-wider text-[color:var(--color-ink-soft)]/60">Inscrição OAB/RJ</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-[color:var(--color-ink)]">24h</p>
@@ -742,6 +744,16 @@ function Footer() {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+        <div className="border-t border-white/10">
+          <div className="mx-auto max-w-7xl px-5 py-4 text-center text-xs leading-relaxed text-white/45 lg:px-8">
+            <p>{OAB_MARKETING_NOTICE}</p>
+            <p className="mt-2">
+              <Link to={PRIVACY_POLICY_PATH} className="text-[color:var(--color-lime-soft)] hover:underline">
+                Política de Privacidade
+              </Link>
+            </p>
           </div>
         </div>
         <div className="border-t border-white/10">

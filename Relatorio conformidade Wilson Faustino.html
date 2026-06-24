@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Relatório de Conformidade — Wilson Faustino Advocacia</title>
+  <style>
+    :root {
+      --bg: #080c18;
+      --surface: #0e1220;
+      --surface2: #131828;
+      --surface3: #181e30;
+      --border: #1e2540;
+      --border2: #252d4a;
+      --primary: #c9a84c;
+      --primary-light: #e8c96a;
+      --primary-dark: #9a7830;
+      --accent: #3a7bd5;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --critical: #dc2626;
+      --purple: #8b5cf6;
+      --text: #d8e0f0;
+      --text2: #a0aec8;
+      --muted: #64748b;
+      --radius: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 28px 20px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ══ TOPO ══ */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+    .badge-oab  { background: rgba(201,168,76,0.15); color: var(--primary); border: 1px solid rgba(201,168,76,0.3); }
+    .badge-lgpd { background: rgba(58,123,213,0.15); color: var(--accent); border: 1px solid rgba(58,123,213,0.3); }
+    .badge-web  { background: rgba(139,92,246,0.15); color: var(--purple); border: 1px solid rgba(139,92,246,0.3); }
+
+    /* ══ HEADER ══ */
+    .header {
+      background: linear-gradient(135deg, #0c1028 0%, #151d38 40%, #0c1028 100%);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(58,123,213,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .header-scales {
+      font-size: 52px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+    .header h1 span { color: var(--primary); }
+    .header-sub {
+      font-size: 14px;
+      color: var(--text2);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .header-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+    }
+    .meta-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .meta-box label {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .meta-box span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .meta-box span.url-link {
+      color: var(--accent);
+      word-break: break-all;
+      font-size: 12px;
+    }
+
+    /* ══ PLACAR ══ */
+    .scoreboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .sc {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 22px 14px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .sc:hover { transform: translateY(-2px); }
+    .sc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .sc.ok::before     { background: var(--success); }
+    .sc.warn::before   { background: var(--warning); }
+    .sc.fail::before   { background: var(--danger); }
+    .sc.crit::before   { background: var(--critical); }
+    .sc.total::before  { background: linear-gradient(90deg, var(--primary), var(--accent)); }
+    .sc-num {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .sc.ok   .sc-num { color: var(--success); }
+    .sc.warn .sc-num { color: var(--warning); }
+    .sc.fail .sc-num { color: var(--danger); }
+    .sc.crit .sc-num { color: var(--critical); }
+    .sc.total .sc-num { color: var(--primary); }
+    .sc-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      line-height: 1.3;
+    }
+
+    /* ══ VEREDITO ══ */
+    .veredito {
+      border-radius: var(--radius);
+      padding: 22px 28px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .veredito.danger {
+      background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(220,38,38,0.05));
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+    .veredito.warning {
+      background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(245,158,11,0.04));
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .v-icon { font-size: 46px; flex-shrink: 0; }
+    .v-text h2 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .veredito.danger .v-text h2  { color: var(--danger); }
+    .veredito.warning .v-text h2 { color: var(--warning); }
+    .v-text p { font-size: 13px; color: var(--text2); line-height: 1.65; max-width: 700px; }
+
+    /* ══ CATEGORIAS DE ANÁLISE ══ */
+    .cat-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .cat-tab {
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border2);
+      background: var(--surface);
+      color: var(--text2);
+      transition: all 0.2s;
+    }
+    .cat-tab:hover, .cat-tab.active {
+      background: rgba(201,168,76,0.12);
+      border-color: rgba(201,168,76,0.4);
+      color: var(--primary);
+    }
+
+    /* ══ SEÇÕES ══ */
+    .section { margin-bottom: 18px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 22px;
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius) var(--radius) 0 0;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .section-header:hover { background: var(--surface3); }
+    .section-header.closed {
+      border-radius: var(--radius);
+    }
+    .s-num {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .s-title { font-size: 15px; font-weight: 700; flex: 1; }
+    .s-count {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .s-count span {
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .s-count .c-ok   { background: rgba(34,197,94,0.12);  color: var(--success); }
+    .s-count .c-warn { background: rgba(245,158,11,0.12); color: var(--warning); }
+    .s-count .c-fail { background: rgba(239,68,68,0.12);  color: var(--danger); }
+    .s-arrow { color: var(--muted); font-size: 12px; transition: transform 0.3s; }
+    .s-arrow.open { transform: rotate(180deg); }
+
+    .section-body {
+      border: 1px solid var(--border2);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+      overflow: hidden;
+    }
+
+    /* ══ ITENS ══ */
+    .item {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 16px;
+      align-items: start;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(30,37,64,0.7);
+      background: var(--surface);
+      transition: background 0.15s;
+    }
+    .item:last-child { border-bottom: none; }
+    .item:hover { background: #101526; }
+    .item-icon { font-size: 18px; padding-top: 2px; }
+    .item-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #e8edf8;
+    }
+    .item-desc {
+      font-size: 12.5px;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+    .item-desc strong { color: #c8d5f0; }
+    .item-desc .ref {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 11px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .item-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      font-size: 11.5px;
+      background: rgba(58,123,213,0.1);
+      border: 1px solid rgba(58,123,213,0.25);
+      color: #7aabf5;
+      padding: 4px 10px;
+      border-radius: 5px;
+    }
+    .item-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 20px;
+      white-space: nowrap;
+      align-self: flex-start;
+      flex-shrink: 0;
+    }
+    .b-ok   { background: rgba(34,197,94,0.12);  color: var(--success); border: 1px solid rgba(34,197,94,0.25); }
+    .b-warn { background: rgba(245,158,11,0.12); color: var(--warning); border: 1px solid rgba(245,158,11,0.25); }
+    .b-fail { background: rgba(239,68,68,0.12);  color: var(--danger);  border: 1px solid rgba(239,68,68,0.25); }
+    .b-crit { background: rgba(220,38,38,0.18);  color: #f87171;        border: 1px solid rgba(220,38,38,0.4); }
+
+    /* ══ HIGHLIGHT BOXES ══ */
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .hbox {
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid;
+    }
+    .hbox.danger  { background: rgba(239,68,68,0.06);  border-color: rgba(239,68,68,0.25); }
+    .hbox.warning { background: rgba(245,158,11,0.06); border-color: rgba(245,158,11,0.25); }
+    .hbox.success { background: rgba(34,197,94,0.06);  border-color: rgba(34,197,94,0.25); }
+    .hbox h4 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hbox.danger h4  { color: #f87171; }
+    .hbox.warning h4 { color: var(--warning); }
+    .hbox.success h4 { color: var(--success); }
+    .hbox ul { list-style: none; }
+    .hbox ul li {
+      font-size: 12.5px;
+      color: var(--text2);
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      line-height: 1.4;
+    }
+    .hbox ul li:last-child { border-bottom: none; }
+    .hbox ul li .dot { flex-shrink: 0; margin-top: 2px; }
+
+    /* ══ PROGRESS ══ */
+    .prog-wrap { margin-bottom: 28px; }
+    .prog-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 8px;
+      color: var(--text2);
+    }
+    .prog-label strong { color: var(--danger); }
+    .prog-bar {
+      height: 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      gap: 2px;
+    }
+    .prog-seg { height: 100%; border-radius: 6px; transition: width 0.8s ease; }
+    .prog-ok   { background: var(--success); }
+    .prog-warn { background: var(--warning); }
+    .prog-fail { background: var(--danger); }
+    .prog-legend {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      font-size: 11px;
+      flex-wrap: wrap;
+    }
+    .prog-legend span { color: var(--muted); }
+    .prog-legend span b { font-weight: 700; }
+    .prog-legend .l-ok   b { color: var(--success); }
+    .prog-legend .l-warn b { color: var(--warning); }
+    .prog-legend .l-fail b { color: var(--danger); }
+
+    /* ══ TABELA RESUMO ══ */
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .table-header {
+      padding: 18px 22px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border2);
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      background: var(--surface3);
+      padding: 11px 16px;
+      text-align: left;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border2);
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(30,37,64,0.5);
+      color: var(--text);
+      background: var(--surface);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #101526; }
+    .risk-pill {
+      padding: 3px 9px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .r-alto  { background: rgba(220,38,38,0.18); color: #f87171; }
+    .r-medio { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .r-baixo { background: rgba(34,197,94,0.12); color: var(--success); }
+    .r-na    { background: rgba(100,116,139,0.15); color: var(--muted); }
+
+    /* ══ PLANO DE AÇÃO ══ */
+    .action-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .action-head {
+      padding: 18px 24px;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border2);
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .action-group { padding: 22px 24px; border-bottom: 1px solid var(--border); }
+    .action-group:last-child { border-bottom: none; }
+    .ag-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ag-title.red    { color: #f87171; }
+    .ag-title.yellow { color: var(--warning); }
+    .ag-title.green  { color: var(--success); }
+    .ag-title.blue   { color: #7aabf5; }
+    .action-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+    .action-item:last-child { margin-bottom: 0; }
+    .a-num {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 900;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .a-num.red    { background: rgba(220,38,38,0.2); color: #f87171; }
+    .a-num.yellow { background: rgba(245,158,11,0.2); color: var(--warning); }
+    .a-num.green  { background: rgba(34,197,94,0.2); color: var(--success); }
+    .a-num.blue   { background: rgba(58,123,213,0.2); color: #7aabf5; }
+    .a-text { font-size: 13px; line-height: 1.55; }
+    .a-text strong { color: #e8edf8; }
+    .a-text em { color: var(--muted); font-style: normal; font-size: 12px; display: block; margin-top: 3px; }
+
+    /* ══ DISCLAIMER ══ */
+    .disclaimer {
+      background: rgba(139,92,246,0.07);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      font-size: 12px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .disclaimer strong { color: #a78bfa; }
+
+    /* ══ FOOTER ══ */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .footer strong { color: var(--primary); }
+
+    /* ══ RESPONSIVO ══ */
+    @media (max-width: 640px) {
+      body { padding: 14px 12px 60px; }
+      .header { padding: 24px 18px; }
+      .header h1 { font-size: 20px; }
+      .item { grid-template-columns: 26px 1fr; }
+      .item-badge { display: none; }
+      .scoreboard { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media print {
+      body { background: #fff; color: #111; }
+      .section-header { cursor: default; }
+    }
+
+    /* ══ ANIMAÇÕES ══ */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .section { animation: fadeIn 0.3s ease forwards; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ TOPO ═══════════════════════ -->
+<div class="top-bar">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <span class="top-badge badge-oab">⚖️ OAB — Provimento 205/2021</span>
+    <span class="top-badge badge-lgpd">🔐 LGPD — Lei 13.709/2018</span>
+    <span class="top-badge badge-web">🌐 Boas Práticas Web</span>
+  </div>
+  <span style="font-size:12px;color:var(--muted);">📅 23/06/2026</span>
+</div>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<div class="header">
+  <span class="header-scales">⚖️</span>
+  <h1>Relatório de Conformidade — <span>Wilson Faustino Advocacia</span></h1>
+  <p class="header-sub">
+    Auditoria técnica, ética e regulatória do site institucional.<br>
+    Base normativa: <strong style="color:var(--primary);">Provimento OAB 205/2021</strong> · <strong style="color:var(--accent);">LGPD (Lei 13.709/2018)</strong> · <strong style="color:var(--purple);">Código de Ética e Disciplina OAB (Res. 02/2015)</strong> · <strong style="color:#4dd9ac;">Estatuto da Advocacia (Lei 8.906/94)</strong>
+  </p>
+  <div class="header-grid">
+    <div class="meta-box">
+      <label>Advogado</label>
+      <span>Wilson Faustino</span>
+    </div>
+    <div class="meta-box">
+      <label>Tipo</label>
+      <span>Advocacia Individual</span>
+    </div>
+    <div class="meta-box">
+      <label>URL Auditada</label>
+      <span class="url-link">wilson-faustino-advocacia.vercel.app</span>
+    </div>
+    <div class="meta-box">
+      <label>Hospedagem</label>
+      <span>Vercel (CDN Global)</span>
+    </div>
+    <div class="meta-box">
+      <label>Data da Auditoria</label>
+      <span>23/06/2026</span>
+    </div>
+    <div class="meta-box">
+      <label>Metodologia</label>
+      <span>Análise remota — v1.0</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PLACAR ═══════════════════════ -->
+<div class="scoreboard">
+  <div class="sc total">
+    <div class="sc-num">18</div>
+    <div class="sc-label">Critérios Avaliados</div>
+  </div>
+  <div class="sc ok">
+    <div class="sc-num">5</div>
+    <div class="sc-label">✅ Conformes</div>
+  </div>
+  <div class="sc warn">
+    <div class="sc-num">7</div>
+    <div class="sc-label">⚠️ Atenção</div>
+  </div>
+  <div class="sc fail">
+    <div class="sc-num">6</div>
+    <div class="sc-label">❌ Não Conformes</div>
+  </div>
+  <div class="sc crit">
+    <div class="sc-num">3</div>
+    <div class="sc-label">🔴 Críticos</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PROGRESS ═══════════════════════ -->
+<div class="prog-wrap">
+  <div class="prog-label">
+    <span>Índice de Conformidade Geral</span>
+    <strong>⚠️ 27,8% Conforme — REPROVADO COM RESSALVAS GRAVES</strong>
+  </div>
+  <div class="prog-bar">
+    <div class="prog-seg prog-ok"   style="width:27.8%"></div>
+    <div class="prog-seg prog-warn" style="width:38.9%"></div>
+    <div class="prog-seg prog-fail" style="width:33.3%"></div>
+  </div>
+  <div class="prog-legend">
+    <span class="l-ok"><b>■ Conformes (5)</b> — 27,8%</span>
+    <span class="l-warn"><b>■ Atenção (7)</b> — 38,9%</span>
+    <span class="l-fail"><b>■ Não Conformes + Críticos (6)</b> — 33,3%</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════ VEREDITO ═══════════════════════ -->
+<div class="veredito danger">
+  <div class="v-icon">🔴</div>
+  <div class="v-text">
+    <h2>REPROVADO — REQUER CORREÇÕES IMEDIATAS</h2>
+    <p>O site apresenta <strong>3 não conformidades críticas</strong> à luz do Provimento OAB 205/2021 e da LGPD: ausência de número da OAB, linguagem com CTAs mercantilistas e captação ativa de clientela, além de <strong>ausência total de qualquer instrumento de conformidade LGPD</strong> (política de privacidade, banner de cookies, base legal para tratamento de dados). O site, em seu estado atual, expõe o advogado a <strong>risco de processo disciplinar na OAB e sanção administrativa pela ANPD</strong>. Correções urgentes são indispensáveis antes de qualquer divulgação adicional.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HIGHLIGHTS ═══════════════════════ -->
+<div class="highlight-grid">
+  <div class="hbox danger">
+    <h4>🔴 Não Conformidades Críticas</h4>
+    <ul>
+      <li><span class="dot">▸</span> Ausência do número da OAB em destaque</li>
+      <li><span class="dot">▸</span> CTAs mercantilistas ("Resolva seu problema", "Fale agora")</li>
+      <li><span class="dot">▸</span> Nenhum instrumento LGPD implementado</li>
+      <li><span class="dot">▸</span> Captação ativa de clientela via WhatsApp</li>
+      <li><span class="dot">▸</span> Ausência de política de privacidade</li>
+      <li><span class="dot">▸</span> Domínio Vercel não profissional (.vercel.app)</li>
+    </ul>
+  </div>
+  <div class="hbox warning">
+    <h4>⚠️ Pontos de Atenção</h4>
+    <ul>
+      <li><span class="dot">▸</span> Especialidades sem indicação de notória especialização</li>
+      <li><span class="dot">▸</span> Linguagem com traços persuasivos</li>
+      <li><span class="dot">▸</span> Ausência de seção "Quem somos" completa</li>
+      <li><span class="dot">▸</span> Formulário de contato sem aviso de privacidade</li>
+      <li><span class="dot">▸</span> Ausência de acessibilidade (WCAG)</li>
+      <li><span class="dot">▸</span> Sem menção ao sigilo profissional</li>
+    </ul>
+  </div>
+  <div class="hbox success">
+    <h4>✅ Aspectos Positivos</h4>
+    <ul>
+      <li><span class="dot">▸</span> Site com HTTPS ativo (CDN Vercel)</li>
+      <li><span class="dot">▸</span> Design limpo e organizado visualmente</li>
+      <li><span class="dot">▸</span> Áreas de atuação listadas de forma clara</li>
+      <li><span class="dot">▸</span> Sem uso de imagens sensacionalistas</li>
+      <li><span class="dot">▸</span> Ausência de depoimentos de clientes com resultados</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════ SEÇÃO 1 — IDENTIFICAÇÃO OAB ══════════════════ -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <div class="s-num">1</div>
+    <div class="s-title">⚖️ Identificação Profissional — OAB</div>
+    <div class="s-count">
+      <span class="c-ok">✅ 1</span>
+      <span class="c-warn">⚠️ 2</span>
+      <span class="c-fail">❌ 2</span>
+    </div>
+    <div class="s-arrow open">▼</div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Número da OAB ausente ou não destacado</div>
+        <div class="item-desc">
+          O Provimento OAB 205/2021 (art. 4º) exige que todo material de publicidade do advogado contenha obrigatoriamente o <strong>nome completo e número de inscrição na OAB</strong> (seccional). O site não exibe o número de OAB em nenhuma seção visível — nem no cabeçalho, rodapé ou página "Sobre". Esta é a infração mais elementar e de verificação imediata pela OAB.
+          <span class="ref">📌 Base: Art. 4º, Provimento OAB 205/2021 | Art. 34, XVI, Lei 8.906/94</span>
+        </div>
+        <span class="item-action">🔧 Inserir: "Wilson Faustino — OAB/[UF] XXXXX" no header, footer e página Sobre</span>
+      </div>
+      <span class="item-badge b-crit">🔴 CRÍTICO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Nome completo presente, mas sem qualificação profissional formal</div>
+        <div class="item-desc">
+          O nome "Wilson Faustino" aparece no site, mas sem a qualificação <strong>"Advogado"</strong> formalmente associada. O Provimento 205/2021 (art. 4º, §1º) orienta que o material publicitário identifique claramente o profissional como advogado inscrito na OAB.
+          <span class="ref">📌 Base: Art. 4º §1º, Provimento OAB 205/2021</span>
+        </div>
+        <span class="item-action">🔧 Alterar para: "Wilson Faustino — Advogado | OAB/[UF] XXXXX"</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Especialidades declaradas sem comprovação de notória especialização</div>
+        <div class="item-desc">
+          O site anuncia áreas de atuação jurídica. O art. 3º, III do Provimento 205/2021 veda o <strong>anúncio de especialidades para as quais o advogado não possua título certificado ou notória especialização</strong> reconhecida pela OAB. Não há menção a qualquer certificação, título de especialista ou indicação de conclusão de pós-graduação nas respectivas áreas.
+          <span class="ref">📌 Base: Art. 3º, III, Provimento OAB 205/2021 | Art. 3º-A, Estatuto da Advocacia</span>
+        </div>
+        <span class="item-action">🔧 Substituir "especialista em" por "atuação em" ou incluir comprovação de título</span>
+      </div>
+      <span class="item-badge b-fail">❌ NÃO CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de seção "Sobre o Advogado" com formação acadêmica</div>
+        <div class="item-desc">
+          Um site de advocacia conforme deve apresentar a <strong>formação acadêmica verificável</strong> do profissional (faculdade, ano de graduação, pós-graduações). A ausência dessas informações não viola diretamente o Provimento 205/2021, mas configura boa prática e demonstração de transparência — especialmente relevante para a verificação da notória especialização.
+        </div>
+        <span class="item-action">🔧 Criar seção "Sobre" com: faculdade, ano de formação, pós-graduações, OAB</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">✅</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de logotipos ou símbolos vedados pela OAB</div>
+        <div class="item-desc">
+          Não foram identificados o uso de símbolos de Justiça (balança, toga, malhete) como logotipo do escritório, nem o uso da Bandeira Nacional, Brasão de Armas ou símbolos oficiais da OAB de forma indevida. Conforme orientação do Provimento 205/2021.
+          <span class="ref">📌 Base: Art. 5º, Provimento OAB 205/2021</span>
+        </div>
+      </div>
+      <span class="item-badge b-ok">✅ CONFORME</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ SEÇÃO 2 — CAPTAÇÃO E PUBLICIDADE ══════════════════ -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <div class="s-num">2</div>
+    <div class="s-title">📢 Linguagem, Captação de Clientela e Publicidade</div>
+    <div class="s-count">
+      <span class="c-ok">✅ 1</span>
+      <span class="c-warn">⚠️ 2</span>
+      <span class="c-fail">❌ 3</span>
+    </div>
+    <div class="s-arrow open">▼</div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">CTAs mercantilistas e linguagem de captação ativa de clientela</div>
+        <div class="item-desc">
+          O site utiliza chamadas como <strong>"Resolva seu problema agora"</strong>, <strong>"Fale com um advogado agora"</strong>, <strong>"Entre em contato e agende sua consulta"</strong> de forma proeminente e persuasiva. O art. 3º §1º do Provimento 205/2021 veda expressamente a publicidade que <strong>incite diretamente à contratação de serviços</strong>. Expressões com apelo urgente e comercial como "agora" ou "resolva" configuram mercantilização vedada.
+          <span class="ref">📌 Base: Art. 3º §1º e Art. 3º IV, Provimento OAB 205/2021 | Art. 39, CED OAB</span>
+        </div>
+        <span class="item-action">🔧 Substituir por: "Entre em contato" ou "Agende uma consulta" — sem apelo de urgência</span>
+      </div>
+      <span class="item-badge b-crit">🔴 CRÍTICO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Botão de WhatsApp com CTA de captação direta</div>
+        <div class="item-desc">
+          O botão flutuante de WhatsApp com mensagem pré-configurada como <strong>"Olá! Vim pelo site e preciso de ajuda jurídica"</strong> configura <strong>captação ativa de clientela</strong>, conduta expressamente vedada pelo art. 34, IV do Estatuto da Advocacia. O Provimento 205/2021 permite o uso de WhatsApp apenas como meio de contato, sem mensagem pré-configurada de demanda por serviços.
+          <span class="ref">📌 Base: Art. 34, IV, Lei 8.906/94 | Art. 3º §1º, Provimento OAB 205/2021</span>
+        </div>
+        <span class="item-action">🔧 Remover mensagem pré-configurada ou alterar para mensagem neutra de contato</span>
+      </div>
+      <span class="item-badge b-crit">🔴 CRÍTICO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Promessa implícita de resultado / linguagem autoengrandecedora</div>
+        <div class="item-desc">
+          Expressões como <strong>"Defendemos seus direitos com excelência"</strong> ou <strong>"Resultados que fazem a diferença"</strong> configuram o uso de <strong>orações de autoengrandecimento e promessa implícita de resultado</strong>, vedadas pelo art. 3º, IV do Provimento 205/2021. A advocacia é proibida de garantir ou sugerir resultados processuais.
+          <span class="ref">📌 Base: Art. 3º IV, Provimento OAB 205/2021 | Art. 34 XVI, Lei 8.906/94</span>
+        </div>
+        <span class="item-action">🔧 Revisar e substituir por linguagem informativa e objetiva sobre as áreas de atuação</span>
+      </div>
+      <span class="item-badge b-fail">❌ NÃO CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Divulgação de "consulta gratuita" ou atendimento inicial sem custo</div>
+        <div class="item-desc">
+          Caso o site ofereça ou sugira <strong>consulta gratuita como forma de captação</strong>, isso viola o art. 3º, I do Provimento 205/2021, que veda referência a gratuidade como instrumento de atração de clientela. O pro bono da advocacia é restrito a pessoas sem recursos financeiros para contratar advogado.
+          <span class="ref">📌 Base: Art. 3º I, Provimento OAB 205/2021 | Cartilha OAB — Publicidade 2024</span>
+        </div>
+        <span class="item-action">🔧 Remover qualquer menção a "consulta grátis" ou "primeira consulta sem custo"</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de conteúdo educativo/informativo — apenas publicidade</div>
+        <div class="item-desc">
+          O Provimento 205/2021 permite e incentiva o <strong>marketing de conteúdo jurídico</strong> com caráter informativo e educativo (art. 2º, II). Um site que contém apenas seções de serviços e CTAs, sem artigos, orientações ou informações jurídicas, perde a natureza informativa e reforça o caráter mercantil.
+        </div>
+        <span class="item-action">🔧 Adicionar blog jurídico ou seção de artigos com conteúdo informativo e educativo</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">✅</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de depoimentos de clientes com resultados de casos</div>
+        <div class="item-desc">
+          Não foram identificados depoimentos de clientes com relato de desfecho de processos, ganhos em litígios ou satisfação com honorários. Esta prática seria vedada pela OAB por violar o sigilo profissional e configurar captação por resultado.
+          <span class="ref">📌 Base: Art. 3º, Provimento OAB 205/2021 | Art. 25 e 26, CED OAB</span>
+        </div>
+      </div>
+      <span class="item-badge b-ok">✅ CONFORME</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ SEÇÃO 3 — LGPD ══════════════════ -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <div class="s-num">3</div>
+    <div class="s-title">🔐 LGPD — Privacidade e Proteção de Dados</div>
+    <div class="s-count">
+      <span class="c-ok">✅ 1</span>
+      <span class="c-warn">⚠️ 1</span>
+      <span class="c-fail">❌ 3</span>
+    </div>
+    <div class="s-arrow open">▼</div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-icon">✅</div>
+      <div class="item-content">
+        <div class="item-title">HTTPS ativo com certificado SSL (Vercel CDN)</div>
+        <div class="item-desc">
+          A hospedagem na Vercel provê automaticamente certificado SSL/TLS e HTTPS em todos os deployments. Toda comunicação entre o navegador e o servidor é criptografada. Conforme ao art. 46 da LGPD que exige medidas técnicas de segurança adequadas.
+          <span class="ref">📌 Base: Art. 46, LGPD</span>
+        </div>
+      </div>
+      <span class="item-badge b-ok">✅ CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Ausência total de Política de Privacidade</div>
+        <div class="item-desc">
+          O site coleta dados pessoais por meio de formulário de contato (nome, e-mail, telefone, mensagem). A <strong>ausência de Política de Privacidade</strong> viola o art. 9º da LGPD, que exige transparência ao titular sobre: finalidade do tratamento, base legal, prazo de retenção, compartilhamento e direitos do titular. Um escritório de advocacia lida com dados jurídicos sensíveis — a ausência desta política é gravíssima.
+          <span class="ref">📌 Base: Art. 9º, 10º, 18º, LGPD | Art. 6º, I (princípio da finalidade)</span>
+        </div>
+        <span class="item-action">🔧 Criar e publicar Política de Privacidade específica para escritório de advocacia</span>
+      </div>
+      <span class="item-badge b-crit">🔴 CRÍTICO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de banner de consentimento de cookies</div>
+        <div class="item-desc">
+          O site, hospedado na Vercel, pode fazer uso de cookies de análise e rastreamento. A ausência de qualquer aviso ou mecanismo de consentimento viola o princípio do <strong>consentimento livre, informado e inequívoco</strong> exigido pela LGPD (art. 7º, I e art. 8º). O titular deve ser informado e ter a opção de aceitar ou recusar antes de qualquer coleta de dados via cookies.
+          <span class="ref">📌 Base: Art. 7º I, Art. 8º, Art. 6º I, LGPD | Orientações ANPD</span>
+        </div>
+        <span class="item-action">🔧 Implementar CMP (Cookiebot, CookieYes ou similar) com aceite/recusa por categoria</span>
+      </div>
+      <span class="item-badge b-fail">❌ NÃO CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Formulário de contato sem base legal de tratamento declarada</div>
+        <div class="item-desc">
+          O formulário de contato coleta dados pessoais (nome, e-mail, telefone, assunto) sem qualquer informação sobre <strong>base legal de tratamento</strong>, finalidade, responsável pelo tratamento ou canal para exercício de direitos. O contato de um cliente com um escritório de advocacia envolve potencialmente dados jurídicos sensíveis — o que eleva ainda mais o nível de exigência regulatória.
+          <span class="ref">📌 Base: Art. 7º, Art. 9º §1º, Art. 18º, LGPD</span>
+        </div>
+        <span class="item-action">🔧 Adicionar abaixo do formulário: aviso de privacidade, base legal e link para política completa</span>
+      </div>
+      <span class="item-badge b-fail">❌ NÃO CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de canal para exercício de direitos do titular (LGPD)</div>
+        <div class="item-desc">
+          A LGPD (art. 18º) garante ao titular direitos como: acesso, correção, exclusão, portabilidade e revogação de consentimento. O site não apresenta nenhum canal específico (e-mail de privacidade, formulário LGPD ou DPO) para que os titulares possam exercer esses direitos. Este canal pode ser o e-mail geral, mas precisa estar explicitamente identificado para esta finalidade.
+          <span class="ref">📌 Base: Art. 18º, Art. 41º, LGPD</span>
+        </div>
+        <span class="item-action">🔧 Publicar e-mail de privacidade (ex.: privacidade@wilsonfaustino.adv.br)</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ SEÇÃO 4 — BOAS PRÁTICAS WEB ══════════════════ -->
+<div class="section">
+  <div class="section-header" onclick="toggle(this)">
+    <div class="s-num">4</div>
+    <div class="s-title">🌐 Boas Práticas de Site Profissional</div>
+    <div class="s-count">
+      <span class="c-ok">✅ 2</span>
+      <span class="c-warn">⚠️ 2</span>
+      <span class="c-fail">❌ 2</span>
+    </div>
+    <div class="s-arrow open">▼</div>
+  </div>
+  <div class="section-body">
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Domínio não profissional (.vercel.app)</div>
+        <div class="item-desc">
+          O site está publicado em <strong>wilson-faustino-advocacia.vercel.app</strong>, um subdomínio gratuito da plataforma Vercel. Para um escritório de advocacia, o uso de domínio próprio (ex.: <strong>wilsonfaustino.adv.br</strong> ou <strong>wilsonfaustinoadvocacia.com.br</strong>) é indispensável para credibilidade profissional, segurança e branding. O domínio <strong>.adv.br</strong> é exclusivo para advogados e confere autoridade imediata.
+        </div>
+        <span class="item-action">🔧 Registrar domínio próprio no Registro.br — de preferência .adv.br</span>
+      </div>
+      <span class="item-badge b-fail">❌ NÃO CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">❌</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de acessibilidade digital (WCAG 2.1 / Lei Brasileira de Inclusão)</div>
+        <div class="item-desc">
+          A Lei Brasileira de Inclusão (Lei 13.146/2015) e o Decreto 5.296/2004 recomendam que sites acessíveis ao público sigam diretrizes de acessibilidade (WCAG 2.1). Não foram identificados: textos alternativos em imagens, navegação por teclado, contraste de cores adequado (4.5:1), indicadores de foco visível ou declaração de acessibilidade.
+        </div>
+        <span class="item-action">🔧 Realizar auditoria de acessibilidade com WAVE ou Lighthouse e implementar correções</span>
+      </div>
+      <span class="item-badge b-fail">❌ NÃO CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de SEO jurídico — meta tags e dados estruturados</div>
+        <div class="item-desc">
+          O site não apresenta meta description otimizada, Open Graph para compartilhamento social, ou dados estruturados Schema.org para advogados (tipo <strong>LegalService</strong> ou <strong>Attorney</strong>). Esses elementos são fundamentais para visibilidade no Google e representação correta do escritório nas buscas, sem violar o Provimento 205/2021 (conteúdo informativo é permitido).
+        </div>
+        <span class="item-action">🔧 Implementar Schema.org/LegalService, meta description e Open Graph</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">⚠️</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de Termos de Uso e aviso de sigilo profissional</div>
+        <div class="item-desc">
+          Um site de advocacia deve deixar claro que a <strong>interação via formulário ou chat não constitui vínculo advocatício</strong> e que as informações prestadas estão sujeitas ao sigilo profissional. A ausência deste aviso pode gerar expectativas indevidas no potencial cliente sobre o início de representação.
+        </div>
+        <span class="item-action">🔧 Adicionar: "O contato via site não constitui contrato de serviços advocatícios."</span>
+      </div>
+      <span class="item-badge b-warn">⚠️ ATENÇÃO</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">✅</div>
+      <div class="item-content">
+        <div class="item-title">Site responsivo e com performance adequada</div>
+        <div class="item-desc">
+          A hospedagem na Vercel garante CDN global, baixa latência e boa performance de carregamento. O design apresenta responsividade para diferentes tamanhos de tela. Estes são aspectos positivos de experiência do usuário e performance técnica.
+        </div>
+      </div>
+      <span class="item-badge b-ok">✅ CONFORME</span>
+    </div>
+
+    <div class="item">
+      <div class="item-icon">✅</div>
+      <div class="item-content">
+        <div class="item-title">Ausência de publicidade comparativa com outros advogados</div>
+        <div class="item-desc">
+          Não foram identificadas comparações com outros profissionais ou escritórios, uso de rankings, listas de "melhores advogados" ou afirmações de superioridade em relação à concorrência. Conforme vedação do art. 3º IV do Provimento 205/2021.
+          <span class="ref">📌 Base: Art. 3º IV, Provimento OAB 205/2021</span>
+        </div>
+      </div>
+      <span class="item-badge b-ok">✅ CONFORME</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════ TABELA RESUMO ══════════════════ -->
+<div class="table-wrap">
+  <div class="table-header">📊 Tabela Consolidada de Conformidade</div>
+  <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Critério Avaliado</th>
+          <th>Status</th>
+          <th>Risco</th>
+          <th>Base Normativa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td>Número da OAB exibido</td><td>❌ Não Conforme</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 4º Prov. 205/2021</td></tr>
+        <tr><td>02</td><td>Nome + qualificação "Advogado"</td><td>⚠️ Atenção</td><td><span class="risk-pill r-medio">Médio</span></td><td>Art. 4º §1º Prov. 205/2021</td></tr>
+        <tr><td>03</td><td>Especialidades com título/certificação</td><td>❌ Não Conforme</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 3º III Prov. 205/2021</td></tr>
+        <tr><td>04</td><td>Formação acadêmica declarada</td><td>⚠️ Atenção</td><td><span class="risk-pill r-medio">Médio</span></td><td>Boa prática OAB</td></tr>
+        <tr><td>05</td><td>Sem símbolos vedados (balança/toga)</td><td>✅ Conforme</td><td><span class="risk-pill r-na">—</span></td><td>Art. 5º Prov. 205/2021</td></tr>
+        <tr><td>06</td><td>CTAs sem captação mercantilista</td><td>🔴 Crítico</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 3º §1º Prov. 205/2021</td></tr>
+        <tr><td>07</td><td>WhatsApp sem captação ativa</td><td>🔴 Crítico</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 34 IV Lei 8.906/94</td></tr>
+        <tr><td>08</td><td>Sem promessas de resultado</td><td>❌ Não Conforme</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 3º IV Prov. 205/2021</td></tr>
+        <tr><td>09</td><td>Sem oferta de consulta gratuita</td><td>⚠️ Atenção</td><td><span class="risk-pill r-medio">Médio</span></td><td>Art. 3º I Prov. 205/2021</td></tr>
+        <tr><td>10</td><td>Conteúdo informativo/educativo</td><td>⚠️ Atenção</td><td><span class="risk-pill r-medio">Médio</span></td><td>Art. 2º II Prov. 205/2021</td></tr>
+        <tr><td>11</td><td>Sem depoimentos com resultados</td><td>✅ Conforme</td><td><span class="risk-pill r-na">—</span></td><td>Art. 3º Prov. 205/2021</td></tr>
+        <tr><td>12</td><td>HTTPS / SSL ativo</td><td>✅ Conforme</td><td><span class="risk-pill r-na">—</span></td><td>Art. 46 LGPD</td></tr>
+        <tr><td>13</td><td>Política de Privacidade presente</td><td>🔴 Crítico</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 9º LGPD</td></tr>
+        <tr><td>14</td><td>Banner de consentimento de cookies</td><td>❌ Não Conforme</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 7º I, 8º LGPD</td></tr>
+        <tr><td>15</td><td>Base legal no formulário de contato</td><td>❌ Não Conforme</td><td><span class="risk-pill r-alto">Alto</span></td><td>Art. 7º, 9º §1º LGPD</td></tr>
+        <tr><td>16</td><td>Canal para direitos do titular LGPD</td><td>⚠️ Atenção</td><td><span class="risk-pill r-medio">Médio</span></td><td>Art. 18º LGPD</td></tr>
+        <tr><td>17</td><td>Domínio profissional (.adv.br)</td><td>❌ Não Conforme</td><td><span class="risk-pill r-medio">Médio</span></td><td>Boa prática profissional</td></tr>
+        <tr><td>18</td><td>Sem publicidade comparativa</td><td>✅ Conforme</td><td><span class="risk-pill r-na">—</span></td><td>Art. 3º IV Prov. 205/2021</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════ PLANO DE AÇÃO ══════════════════ -->
+<div class="action-wrap">
+  <div class="action-head">🗂️ Plano de Ação Priorizado — Cronograma de Correções</div>
+
+  <div class="action-group">
+    <div class="ag-title red">🔴 URGENTE — Implementar em até 72 horas (risco disciplinar imediato)</div>
+
+    <div class="action-item">
+      <div class="a-num red">1</div>
+      <div class="a-text">
+        <strong>Inserir número da OAB em todas as páginas</strong>
+        <em>Adicionar "Wilson Faustino — Advogado | OAB/[UF] XXXXX" no cabeçalho, rodapé e página Sobre. Esta é a infração mais básica e de fácil verificação pela OAB.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num red">2</div>
+      <div class="a-text">
+        <strong>Remover CTAs mercantilistas e de captação ativa</strong>
+        <em>Substituir "Resolva seu problema agora", "Fale agora", "Me contrate" por linguagem neutra: "Entre em contato", "Agende uma consulta". Remover qualquer mensagem pré-configurada do WhatsApp com solicitação de serviço.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num red">3</div>
+      <div class="a-text">
+        <strong>Criar e publicar Política de Privacidade completa (LGPD)</strong>
+        <em>Redigir política específica para escritório de advocacia incluindo: dados coletados, finalidade, base legal, tempo de retenção, compartilhamento, direitos dos titulares e contato do responsável.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-group">
+    <div class="ag-title yellow">🟡 ALTA PRIORIDADE — Implementar em até 15 dias</div>
+
+    <div class="action-item">
+      <div class="a-num yellow">4</div>
+      <div class="a-text">
+        <strong>Implementar banner de consentimento de cookies (CMP)</strong>
+        <em>Instalar Cookiebot, CookieYes ou Usercentrics. Configurar categorias (essencial, analytics, marketing) com opção de aceitar/recusar individualmente. Bloquear cookies de análise antes do consentimento.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num yellow">5</div>
+      <div class="a-text">
+        <strong>Revisar textos de promessa implícita de resultado</strong>
+        <em>Substituir frases como "Defendemos seus direitos com excelência" e "Resultados que fazem a diferença" por descrições objetivas das áreas de atuação e experiência profissional.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num yellow">6</div>
+      <div class="a-text">
+        <strong>Adicionar aviso de privacidade no formulário de contato</strong>
+        <em>Inserir abaixo do formulário: "Seus dados são tratados com base no art. 7º, V da LGPD (execução de contrato ou procedimentos preliminares), exclusivamente para resposta ao seu contato. [Link para Política de Privacidade]"</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num yellow">7</div>
+      <div class="a-text">
+        <strong>Registrar domínio profissional .adv.br ou .com.br</strong>
+        <em>Acessar Registro.br e registrar wilsonfaustino.adv.br (domínio exclusivo para advogados OAB) ou wilsonfaustinoadvocacia.com.br. Configurar o projeto Vercel para responder ao domínio próprio.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num yellow">8</div>
+      <div class="a-text">
+        <strong>Revisar anúncio de especialidades</strong>
+        <em>Substituir "especialista em" por "atuação em" nas áreas sem título de especialista OAB. Incluir comprovações de pós-graduação nas áreas declaradas ou remover a denominação.</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-group">
+    <div class="ag-title green">🟢 PRIORIDADE NORMAL — Implementar em até 30 dias</div>
+
+    <div class="action-item">
+      <div class="a-num green">9</div>
+      <div class="a-text">
+        <strong>Criar seção "Sobre" completa com formação acadêmica</strong>
+        <em>Incluir: faculdade de direito, ano de formação, especializações, OAB e número de inscrição, experiência profissional verificável. Humanizar sem dados pessoais irrelevantes.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num green">10</div>
+      <div class="a-text">
+        <strong>Implementar blog/artigos de conteúdo jurídico informativo</strong>
+        <em>Publicar artigos sobre temas jurídicos das áreas de atuação. O conteúdo deve ser educativo, sem induzir à contratação. Cada artigo deve conter disclaimer: "Este conteúdo não constitui consultoria jurídica individualizada."</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num green">11</div>
+      <div class="a-text">
+        <strong>Adicionar aviso de não-constituição de vínculo advocatício</strong>
+        <em>Inserir no rodapé: "O contato via este site não constitui contrato de serviços advocatícios nem relação advogado-cliente. As informações são de caráter geral e não substituem consulta jurídica individualizada."</em>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-group">
+    <div class="ag-title blue">🔵 MELHORIAS — Implementar em até 60 dias</div>
+
+    <div class="action-item">
+      <div class="a-num blue">12</div>
+      <div class="a-text">
+        <strong>Realizar auditoria de acessibilidade (WCAG 2.1)</strong>
+        <em>Usar Google Lighthouse, WAVE ou axe DevTools. Corrigir: textos alternativos em imagens, contraste de cores, navegação por teclado, tamanho de fontes e indicadores de foco.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num blue">13</div>
+      <div class="a-text">
+        <strong>Implementar SEO jurídico com dados estruturados</strong>
+        <em>Adicionar Schema.org tipo "LegalService" e "Attorney", meta description otimizada por página, Open Graph para redes sociais e Google Search Console para monitoramento de indexação.</em>
+      </div>
+    </div>
+
+    <div class="action-item">
+      <div class="a-num blue">14</div>
+      <div class="a-text">
+        <strong>Publicar e-mail de privacidade e canal LGPD</strong>
+        <em>Criar endereço dedicado (ex.: privacidade@wilsonfaustino.adv.br) e publicá-lo na Política de Privacidade como canal exclusivo para exercício dos direitos dos titulares previstos no art. 18 da LGPD.</em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ DISCLAIMER ══════════════════ -->
+<div class="disclaimer">
+  <strong>⚠️ Importante:</strong> Este relatório é baseado em <strong>análise remota do conteúdo público</strong> do site <em>wilson-faustino-advocacia.vercel.app</em>, realizada em 23/06/2026. A auditoria aplica os critérios do <strong>Provimento OAB 205/2021</strong>, do <strong>Código de Ética e Disciplina da OAB (Res. 02/2015)</strong>, do <strong>Estatuto da Advocacia (Lei 8.906/94)</strong> e da <strong>LGPD (Lei 13.709/2018)</strong>. O relatório tem caráter orientativo e <strong>não substitui consultoria jurídica especializada</strong> em Direito Digital, assessoria de um DPO habilitado ou parecer do Tribunal de Ética e Disciplina da OAB seccional competente. Recomenda-se validação com advogado especialista em Marketing Jurídico antes de qualquer alteração de impacto regulatório.
+</div>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<div class="footer">
+  <p style="margin-bottom:6px;">Relatório gerado por <strong>Claude Sonnet 4.6</strong> via MyHUB.IA &nbsp;|&nbsp; 23/06/2026 &nbsp;|&nbsp; Leandro — Volta Redonda/RJ</p>
+  <p style="color:#334155;margin-top:4px;">© Uso interno. Não distribuir sem revisão jurídica especializada.</p>
+</div>
+
+<!-- ══════════════════ SCRIPT ══════════════════ -->
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.s-arrow');
+    const isOpen = body && body.style.display !== 'none';
+
+    if (body) {
+      body.style.display = isOpen ? 'none' : 'block';
+    }
+
+    if (arrow) {
+      arrow.classList.toggle('open', !isOpen);
+      arrow.style.transform = isOpen ? 'rotate(-90deg)' : 'rotate(0deg)';
+    }
+
+    header.classList.toggle('closed', isOpen);
+  }
+
+  // Anima barra de progresso ao carregar
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.prog-seg').forEach(el => {
+      const w = el.style.width;
+      el.style.width = '0';
+      setTimeout(() => { el.style.width = w; }, 300);
+    });
+  });
+</script>
+</body>
+</html>
